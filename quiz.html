@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="module">
+    import { renderHeader, renderFooter, renderQuiz } from './assets/ui.js';
+    import { getQueryParam, fetchJSON } from './assets/app.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const headerContainer = document.getElementById('site-header');
+      const footerContainer = document.getElementById('site-footer');
+      renderHeader(headerContainer);
+      renderFooter(footerContainer);
+
+      const subjectId = getQueryParam('subject');
+      const quizId = getQueryParam('quiz');
+      if (!subjectId || !quizId) {
+        document.getElementById('quiz-container').textContent = 'Invalid quiz.';
+        return;
+      }
+      const quizData = await fetchJSON(`data/${subjectId}/${quizId}.json`);
+      renderQuiz(quizData);
+    });
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header id="site-header"></header>
+  <main id="main">
+    <div id="quiz-container"></div>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>
