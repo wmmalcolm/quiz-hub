@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subjects - Quiz Hub</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="module">
+    import { renderHeader, renderFooter, renderSubjectsList } from './assets/ui.js';
+    import { fetchJSON } from './assets/app.js';
+    document.addEventListener('DOMContentLoaded', async () => {
+      renderHeader();
+      const data = await fetchJSON('data/subjects.json');
+      if (data && data.subjects) {
+        renderSubjectsList(data.subjects);
+      }
+      renderFooter();
+    });
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div id="header"></div>
+  <main id="main" tabindex="-1">
+    <h1>Subjects</h1>
+    <div id="subjects-list"></div>
+  </main>
+  <div id="footer"></div>
+</body>
+</html>
