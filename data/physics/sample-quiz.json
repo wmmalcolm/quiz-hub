@@ -1,0 +1,95 @@
+sample-quiz.json{
+  "subject": "physics",
+  "id": "set-1",
+  "title": "Engineering Physics Quiz",
+  "shuffle_questions": true,
+  "shuffle_choices": true,
+  "time_limit_seconds": 0,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq_single",
+      "prompt": "What law states that force equals mass times acceleration?",
+      "choices": ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Hooke's Law"],
+      "answer_index": 1,
+      "rationale": "Newton’s Second Law defines force (F = ma)."
+    },
+    {
+      "id": "q2",
+      "type": "mcq_single",
+      "prompt": "The SI unit of energy is:",
+      "choices": ["Joule", "Newton", "Watt", "Pascal"],
+      "answer_index": 0,
+      "rationale": "Energy is measured in Joules."
+    },
+    {
+      "id": "q3",
+      "type": "mcq_single",
+      "prompt": "Which quantity is a vector?",
+      "choices": ["Speed", "Mass", "Velocity", "Energy"],
+      "answer_index": 2,
+      "rationale": "Velocity has both magnitude and direction."
+    },
+    {
+      "id": "q4",
+      "type": "mcq_single",
+      "prompt": "In uniform circular motion, acceleration is always directed:",
+      "choices": ["Outward from the center", "Along the path", "Toward the center", "Perpendicular to velocity"],
+      "answer_index": 2,
+      "rationale": "Centripetal acceleration always points toward the center."
+    },
+    {
+      "id": "q5",
+      "type": "mcq_single",
+      "prompt": "Ohm’s Law relates voltage (V), current (I), and:",
+      "choices": ["Resistance (R)", "Capacitance (C)", "Inductance (L)", "Power (P)"],
+      "answer_index": 0,
+      "rationale": "Ohm’s Law: V = IR."
+    },
+    {
+      "id": "q6",
+      "type": "mcq_single",
+      "prompt": "What is the acceleration due to gravity near Earth's surface?",
+      "choices": ["8.9 m/s²", "9.8 m/s²", "10.8 m/s²", "9.0 m/s²"],
+      "answer_index": 1,
+      "rationale": "Standard gravitational acceleration is approximately 9.8 m/s²."
+    },
+    {
+      "id": "q7",
+      "type": "mcq_single",
+      "prompt": "When light passes from air into water, it:",
+      "choices": ["Speeds up", "Slows down", "Stops", "Maintains same speed"],
+      "answer_index": 1,
+      "rationale": "Light slows down in denser media like water."
+    },
+    {
+      "id": "q8",
+      "type": "mcq_single",
+      "prompt": "Which fundamental force is responsible for holding the nucleus together?",
+      "choices": ["Gravitational", "Electromagnetic", "Strong nuclear", "Weak nuclear"],
+      "answer_index": 2,
+      "rationale": "The strong nuclear force binds protons and neutrons in the nucleus."
+    },
+    {
+      "id": "q9",
+      "type": "mcq_single",
+      "prompt": "Power is the rate of doing work. Its SI unit is:",
+      "choices": ["Watt", "Joule", "Newton", "Ampere"],
+      "answer_index": 0,
+      "rationale": "Power = Work/time; 1 Watt = 1 Joule per second."
+    },
+    {
+      "id": "q10",
+      "type": "mcq_single",
+      "prompt": "Which of these best defines kinetic energy?",
+      "choices": [
+        "Energy stored in chemical bonds",
+        "Energy of position",
+        "Energy due to motion",
+        "Energy from the Sun"
+      ],
+      "answer_index": 2,
+      "rationale": "Kinetic energy is energy due to motion (½mv²)."
+    }
+  ]
+}
