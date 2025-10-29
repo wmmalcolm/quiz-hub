@@ -1,32 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Subject - Quiz Hub</title>
-  <link rel="stylesheet" href="assets/styles.css">
-  <script type="module">
-    import { renderHeader, renderFooter, renderQuizList } from './assets/ui.js';
-    import { fetchJSON, getQueryParam } from './assets/app.js';
-    document.addEventListener('DOMContentLoaded', async () => {
-      renderHeader();
-      const subjectId = getQueryParam('id');
-      if (subjectId) {
-        const data = await fetchJSON(`data/${subjectId}/index.json`);
-        if (data && data.quizzes) {
-          renderQuizList(subjectId, data.quizzes);
-        }
-      }
-      renderFooter();
-    });
-  </script>
+  <meta charset="utf-8" />
+  <title>Subject – Quiz Hub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-  <div id="header"></div>
-  <main id="main" tabindex="-1">
-    <h1 id="subject-title">Subject</h1>
-    <div id="quiz-list"></div>
-  </main>
-  <div id="footer"></div>
+  <header>
+    <h1 id="subject-title"></h1>
+    <a href="subjects.html">← Back to Subjects</a>
+  </header>
+
+  <main id="quiz-list"></main>
+
+  <script>
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    async function loadSubject() {
+      const subjectId = getQueryParam('id');
+      if (!subjectId) {
+        document.getElementById('quiz-list').innerText = 'No subject specified.';
+        return;
+      }
+
+      const res = await fetch(`data/${subjectId}/index.json`);
+      const data = await res.json();
+      document.getElementById('subject-title').innerText = data.subject.toUpperCase();
+
+      const container = document.getElementById('quiz-list');
+      data.quizzes.forEach(q => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <h2>${q.title}</h2>
+          <p>${q.description}</p>
+          <a href="quiz.html?subject=${subjectId}&quiz=${q.id}">Start Quiz</a>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    loadSubject();
+  </script>
 </body>
 </html>
