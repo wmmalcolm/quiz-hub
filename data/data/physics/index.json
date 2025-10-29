@@ -1,0 +1,11 @@
+{
+  "subject": "physics",
+  "quizzes": [
+    {
+      "id": "set-1",
+      "title": "Engineering Physics Quiz",
+      "description": "10-question fundamentals quiz",
+      "question_count": 10
+    }
+  ]
+}
