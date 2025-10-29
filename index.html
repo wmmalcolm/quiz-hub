@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Hub</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="module" src="assets/app.js"></script>
+  <script type="module" src="assets/ui.js"></script>
+  <script type="module" src="assets/a11y.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header id="header"></header>
+  <main id="main">
+    <h1>Welcome to Quiz Hub</h1>
+    <p>Test your knowledge across multiple subjects.</p>
+    <button id="browse-btn">Browse Subjects</button>
+  </main>
+  <footer id="footer"></footer>
+  <script type="module">
+    import { renderHeader, renderFooter } from './assets/ui.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeader();
+      renderFooter();
+      const btn = document.getElementById('browse-btn');
+      btn.addEventListener('click', () => {
+        window.location.href = 'subjects.html';
+      });
+    });
+  </script>
+</body>
+</html>
