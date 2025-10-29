@@ -1,0 +1,178 @@
+{
+  "subject": "engineering",
+  "id": "poe-unit1-2",
+  "title": "Principles of Engineering: Mechanisms & VEX Intro Quiz",
+  "shuffle_questions": true,
+  "shuffle_choices": true,
+  "time_limit_seconds": 0,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq_single",
+      "prompt": "Mechanical Advantage (MA) is defined as:",
+      "choices": [
+        "Output force divided by input force",
+        "Input force divided by output force",
+        "Output work divided by input work",
+        "Input distance divided by output distance"
+      ],
+      "answer_index": 0,
+      "rationale": "MA = F_out / F_in describes how much a machine multiplies force."
+    },
+    {
+      "id": "q2",
+      "type": "mcq_single",
+      "prompt": "Ideal Mechanical Advantage (IMA) for a lever is:",
+      "choices": [
+        "Effort arm length ÷ Resistance arm length",
+        "Resistance arm length ÷ Effort arm length",
+        "Output force ÷ Input force",
+        "Input force ÷ Output force"
+      ],
+      "answer_index": 0,
+      "rationale": "IMA lever = L_effort / L_resistance (distance ratio in an ideal, frictionless system)."
+    },
+    {
+      "id": "q3",
+      "type": "mcq_single",
+      "prompt": "For a first-class lever, the fulcrum is located:",
+      "choices": [
+        "Between effort and load",
+        "At the load end",
+        "At the effort end",
+        "There is no fulcrum"
+      ],
+      "answer_index": 0,
+      "rationale": "First-class levers place the fulcrum between the effort and the load."
+    },
+    {
+      "id": "q4",
+      "type": "mcq_single",
+      "prompt": "Torque (τ) on a lever is computed as:",
+      "choices": [
+        "Force × time",
+        "Force × distance perpendicular to pivot",
+        "Mass × acceleration",
+        "Work ÷ time"
+      ],
+      "answer_index": 1,
+      "rationale": "τ = F × r⊥ (force times perpendicular moment arm)."
+    },
+    {
+      "id": "q5",
+      "type": "mcq_single",
+      "prompt": "A gear train with a 10-tooth driver and a 40-tooth driven gear has a gear ratio of:",
+      "choices": ["1:4", "4:1", "2:1", "1:2"],
+      "answer_index": 0,
+      "rationale": "GR = N_driven / N_driver = 40 / 10 = 4 → 1:4."
+    },
+    {
+      "id": "q6",
+      "type": "mcq_single",
+      "prompt": "In an ideal gear train, increasing gear ratio (larger driven vs. smaller driver) will:",
+      "choices": [
+        "Increase output speed and decrease output torque",
+        "Decrease output speed and increase output torque",
+        "Increase both output speed and torque",
+        "Decrease both output speed and torque"
+      ],
+      "answer_index": 1,
+      "rationale": "Higher ratio trades speed for torque in an ideal (lossless) system."
+    },
+    {
+      "id": "q7",
+      "type": "mcq_single",
+      "prompt": "For a block-and-tackle with 4 supporting rope segments, the Ideal Mechanical Advantage is:",
+      "choices": ["2", "3", "4", "8"],
+      "answer_index": 2,
+      "rationale": "IMA for a simple pulley system equals the number of supporting rope segments."
+    },
+    {
+      "id": "q8",
+      "type": "mcq_single",
+      "prompt": "The Ideal Mechanical Advantage (IMA) of an inclined plane is:",
+      "choices": [
+        "Output force ÷ Input force",
+        "Length of plane ÷ Height",
+        "Height ÷ Length of plane",
+        "Input work ÷ Output work"
+      ],
+      "answer_index": 1,
+      "rationale": "IMA_incline = L / h (distance ratio)."
+    },
+    {
+      "id": "q9",
+      "type": "mcq_single",
+      "prompt": "Actual Mechanical Advantage (AMA) is typically _____ than IMA due to friction and losses.",
+      "choices": ["Greater", "Equal", "Less", "Unrelated"],
+      "answer_index": 2,
+      "rationale": "Losses reduce realized force multiplication, so AMA < IMA in real systems."
+    },
+    {
+      "id": "q10",
+      "type": "mcq_single",
+      "prompt": "For a wheel and axle, IMA is approximated by:",
+      "choices": [
+        "Radius_axle ÷ Radius_wheel",
+        "Radius_wheel ÷ Radius_axle",
+        "Torque_out ÷ Torque_in",
+        "Speed_out ÷ Speed_in"
+      ],
+      "answer_index": 1,
+      "rationale": "IMA_wheel-axle ≈ R_wheel / R_axle (distance ratio)."
+    },
+    {
+      "id": "q11",
+      "type": "mcq_single",
+      "prompt": "In VEX programming, a digital input (like a limit switch) reads as:",
+      "choices": [
+        "A continuous range of values",
+        "Only 0 or 1 (false/true)",
+        "A voltage between 0–12 V displayed directly",
+        "A signed integer speed"
+      ],
+      "answer_index": 1,
+      "rationale": "Digital inputs are binary: LOW/HIGH or 0/1."
+    },
+    {
+      "id": "q12",
+      "type": "mcq_single",
+      "prompt": "Which control structure best repeats code a known number of times?",
+      "choices": [
+        "while loop",
+        "for loop",
+        "if-else statement",
+        "switch statement"
+      ],
+      "answer_index": 1,
+      "rationale": "A for loop is ideal when the iteration count is known."
+    },
+    {
+      "id": "q13",
+      "type": "mcq_single",
+      "prompt": "A motor command set to 50% on a test bed primarily controls:",
+      "choices": [
+        "Output voltage exactly",
+        "A duty-cycle or velocity percentage (implementation-dependent)",
+        "Gear ratio",
+        "Sprocket tooth count"
+      ],
+      "answer_index": 1,
+      "rationale": "Percent output typically maps to a velocity or PWM duty-cycle abstraction."
+    },
+    {
+      "id": "q14",
+      "type": "mcq_single",
+      "prompt": "Which statement about compound machines is MOST accurate?",
+      "choices": [
+        "They reduce friction to zero.",
+        "Their overall MA is the product of individual MAs (ideal).",
+        "They always conserve energy exactly in practice.",
+        "They increase work output beyond work input."
+      ],
+      "answer_index": 1,
+      "rationale": "In ideal analysis, MA_total ≈ MA1 × MA2 × … ; real systems have losses."
+    },
+    {
+      "id": "q15",
+      "type": "mcq_s_
