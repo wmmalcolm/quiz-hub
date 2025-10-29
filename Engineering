@@ -1,0 +1,21 @@
+index.html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Quiz Hub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Quiz Hub</h1>
+    <a href="subjects.html">Browse Subjects</a>
+  </header>
+
+  <main>
+    <p>Welcome! Pick a subject to start a quiz.</p>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
