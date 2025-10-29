@@ -1,0 +1,10 @@
+{
+  "subjects": [
+    {
+      "id": "physics",
+      "name": "Physics",
+      "description": "Engineering physics fundamentals and applied concepts",
+      "icon": "⚛️"
+    }
+  ]
+}
