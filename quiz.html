@@ -1,36 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz</title>
-  <link rel="stylesheet" href="assets/styles.css">
-  <script type="module">
-    import { renderHeader, renderFooter, renderQuiz } from './assets/ui.js';
-    import { getQueryParam, fetchJSON } from './assets/app.js';
+  <meta charset="utf-8" />
+  <title>Quiz – Quiz Hub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header>
+    <h1 id="quiz-title"></h1>
+    <a href="subjects.html">\u2190 Back to Subjects</a>
+  </header>
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      const headerContainer = document.getElementById('site-header');
-      const footerContainer = document.getElementById('site-footer');
-      renderHeader(headerContainer);
-      renderFooter(footerContainer);
+  <main id="quiz-container"></main>
+  <button id="submit-btn">Submit</button>
+  <div id="results"></div>
 
+  <script>
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+    async function loadQuiz() {
       const subjectId = getQueryParam('subject');
       const quizId = getQueryParam('quiz');
       if (!subjectId || !quizId) {
         document.getElementById('quiz-container').textContent = 'Invalid quiz.';
         return;
       }
-      const quizData = await fetchJSON(`data/${subjectId}/${quizId}.json`);
-      renderQuiz(quizData);
-    });
+      // fetch quiz JSON (always sample-quiz.json for now)
+      const res = await fetch(`data/${subjectId}/sample-quiz.json`);
+      const quiz = await res.json();
+      document.getElementById('quiz-title').textContent = quiz.title;
+      let questions = quiz.questions;
+      if (quiz.shuffle_questions) {
+        questions = shuffle([...questions]);
+      }
+      const container = document.getElementById('quiz-container');
+      questions.forEach((q, idx) => {
+        const qDiv = document.createElement('fieldset');
+        const legend = document.createElement('legend');
+        legend.textContent = (idx + 1) + '. ' + q.prompt;
+        qDiv.appendChild(legend);
+        let choices = q.choices;
+        if (quiz.shuffle_choices) {
+          choices = shuffle([...choices]);
+        }
+        choices.forEach((choice) => {
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = 'q' + idx;
+          input.value = choice;
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(' ' + choice));
+          qDiv.appendChild(label);
+          qDiv.appendChild(document.createElement('br'));
+        });
+        container.appendChild(qDiv);
+      });
+      document.getElementById('submit-btn').addEventListener('click', () => {
+        let score = 0;
+        questions.forEach((q, idx) => {
+          const selected = document.querySelector('input[name="q" + idx + ""]:checked');
+          if (selected && selected.value === q.choices[q.answer_index]) {
+            score++;
+          }
+        });
+        document.getElementById('results').textContent = 'Your score: ' + score + '/' + questions.length;
+        // save attempt to localStorage
+        const timestamp = Date.now();
+        const key = 'quizhub::' + subjectId + '::' + quizId + '::' + timestamp;
+        localStorage.setItem(key, JSON.stringify({score: score, total: questions.length}));
+      });
+    }
+    loadQuiz();
   </script>
-</head>
-<body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-  <header id="site-header"></header>
-  <main id="main">
-    <div id="quiz-container"></div>
-  </main>
-  <footer id="site-footer"></footer>
 </body>
 </html>
