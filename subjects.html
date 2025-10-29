@@ -1,29 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Subjects - Quiz Hub</title>
-  <link rel="stylesheet" href="assets/styles.css">
-  <script type="module">
-    import { renderHeader, renderFooter, renderSubjectsList } from './assets/ui.js';
-    import { fetchJSON } from './assets/app.js';
-    document.addEventListener('DOMContentLoaded', async () => {
-      renderHeader();
-      const data = await fetchJSON('data/subjects.json');
-      if (data && data.subjects) {
-        renderSubjectsList(data.subjects);
-      }
-      renderFooter();
-    });
-  </script>
+  <meta charset="utf-8" />
+  <title>Subjects – Quiz Hub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-  <div id="header"></div>
-  <main id="main" tabindex="-1">
+  <header>
     <h1>Subjects</h1>
-    <div id="subjects-list"></div>
-  </main>
-  <div id="footer"></div>
+    <a href="index.html">← Back to Home</a>
+  </header>
+
+  <main id="subjects"></main>
+
+  <script>
+    async function loadSubjects() {
+      const res = await fetch('data/subjects.json');
+      const data = await res.json();
+      const container = document.getElementById('subjects');
+      data.subjects.forEach(s => {
+        const div = document.createElement('div');
+        div.innerHTML = `<h2>${s.icon} ${s.name}</h2><p>${s.description}</p>
+                         <a href="subject.html?id=${s.id}">Start</a>`;
+        container.appendChild(div);
+      });
+    }
+    loadSubjects();
+  </script>
 </body>
 </html>
